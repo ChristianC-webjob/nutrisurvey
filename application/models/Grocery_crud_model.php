@@ -35,6 +35,9 @@ class Grocery_crud_model  extends CI_Model  {
 	protected $relation_n_n = array();
 	protected $primary_keys = array();
 
+	// NEW
+	protected $add_values = array();
+
 	function __construct()
     {
         parent::__construct();
@@ -190,7 +193,7 @@ class Grocery_crud_model  extends CI_Model  {
     	} else {
             $this->db->select($this->table_name . '.' . $key);
         }
-        
+
         return $this->db->get($this->table_name)->num_rows();
     }
 
@@ -582,6 +585,16 @@ class Grocery_crud_model  extends CI_Model  {
     function escape_str($value)
     {
     	return $this->db->escape_str($value);
+    }
+
+		/* NEW */
+    function set_add_value($field_name, $value) {
+      $this->add_values[$field_name] = $value;
+    }
+
+    /* NEW */
+    function get_add_values() {
+        return (object) $this->add_values;
     }
 
 }

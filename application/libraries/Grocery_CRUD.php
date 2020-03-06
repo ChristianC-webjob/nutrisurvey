@@ -1898,10 +1898,13 @@ class grocery_CRUD_Layout extends grocery_CRUD_Model_Driver
 		$data 				= $this->get_common_data();
 		$data->types 		= $this->get_field_types();
 
+		/* NEW */ $data->field_values = $this->get_add_values(null);
+
 		$data->list_url 		= $this->getListUrl();
 		$data->insert_url		= $this->getInsertUrl();
 		$data->validation_url	= $this->getValidationInsertUrl();
-		$data->input_fields 	= $this->get_add_input_fields();
+		/* OLD */ //$data->input_fields 	= $this->get_add_input_fields();
+		/* NEW */ $data->input_fields  = $this->get_add_input_fields($data->field_values);
 
 		$data->fields 			= $this->get_add_fields();
 		$data->hidden_fields	= $this->get_add_hidden_fields();
@@ -2832,7 +2835,8 @@ class grocery_CRUD_Layout extends grocery_CRUD_Model_Driver
 		{
 			$field_info = $types[$field->field_name];
 
-			$field_value = !empty($field_values) && isset($field_values->{$field->field_name}) ? $field_values->{$field->field_name} : null;
+			//$field_value = !empty($field_values) && isset($field_values->{$field->field_name}) ? $field_values->{$field->field_name} : null;
+			/* NEW */ $field_value = !empty($field_values) && isset($field_values->{$field->field_name}) ? $field_values->{$field->field_name} : $field_info->default;
 
 			if(!isset($this->callback_add_field[$field->field_name]))
 			{
@@ -3692,6 +3696,18 @@ class Grocery_CRUD extends grocery_CRUD_States
 	public function __construct()
 	{
 
+	}
+
+	/* NEW */
+	public function getModel() {
+		if($this->basic_model === null)
+		 $this->set_default_Model();
+		return $this->basic_model;
+	}
+	/* NEW */
+	protected function get_add_values() {
+		$values = $this->basic_model->get_add_values();
+		return $values;
 	}
 
 	/**

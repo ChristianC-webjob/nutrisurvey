@@ -13,8 +13,8 @@ class Auth extends CI_Controller
 	{
 		parent::__construct();
 		$this->load->database();
-		$this->load->library(['ion_auth', 'form_validation']);
-		$this->load->helper(['url', 'language']);
+		// $this->load->library(['ion_auth', 'form_validation']);
+		// $this->load->helper(['url', 'language']);
 
 		$this->form_validation->set_error_delimiters($this->config->item('error_start_delimiter', 'ion_auth'), $this->config->item('error_end_delimiter', 'ion_auth'));
 
@@ -35,27 +35,28 @@ class Auth extends CI_Controller
 		else if (!$this->ion_auth->is_admin()) // remove this elseif if you want to enable this for non-admins
 		{
 			// redirect them to the home page because they must be an administrator to view this
-			show_error('You must be an administrator to view this page.');
+			show_error('You must be an administrator to view this page aweonao.');
 		}
 		else
 		{
 			$this->data['title'] = $this->lang->line('index_heading');
-			
+
 			// set the flash data error message if there is one
 			$this->data['message'] = (validation_errors()) ? validation_errors() : $this->session->flashdata('message');
 
 			//list the users
 			$this->data['users'] = $this->ion_auth->users()->result();
-			
+
 			//USAGE NOTE - you can do more complicated queries like this
 			//$this->data['users'] = $this->ion_auth->where('field', 'value')->users()->result();
-			
+
 			foreach ($this->data['users'] as $k => $user)
 			{
 				$this->data['users'][$k]->groups = $this->ion_auth->get_users_groups($user->id)->result();
 			}
 
 			$this->_render_page('auth' . DIRECTORY_SEPARATOR . 'index', $this->data);
+
 		}
 	}
 
@@ -81,7 +82,7 @@ class Auth extends CI_Controller
 				//if the login is successful
 				//redirect them back to the home page
 				$this->session->set_flashdata('message', $this->ion_auth->messages());
-				redirect('/', 'refresh');
+				redirect('', 'refresh');
 			}
 			else
 			{
@@ -204,7 +205,7 @@ class Auth extends CI_Controller
 	public function forgot_password()
 	{
 		$this->data['title'] = $this->lang->line('forgot_password_heading');
-		
+
 		// setting validation rules by checking whether identity is username or email
 		if ($this->config->item('identity', 'ion_auth') != 'email')
 		{
@@ -289,7 +290,7 @@ class Auth extends CI_Controller
 		}
 
 		$this->data['title'] = $this->lang->line('reset_password_heading');
-		
+
 		$user = $this->ion_auth->forgotten_password_check($code);
 
 		if ($user)
@@ -593,10 +594,10 @@ class Auth extends CI_Controller
 		$user = $this->ion_auth->user($id)->row();
 		$groups = $this->ion_auth->groups()->result_array();
 		$currentGroups = $this->ion_auth->get_users_groups($id)->result();
-			
+
 		//USAGE NOTE - you can do more complicated queries like this
 		//$groups = $this->ion_auth->where(['field' => 'value'])->groups()->result_array();
-	
+
 
 		// validate form input
 		$this->form_validation->set_rules('first_name', $this->lang->line('edit_user_validation_fname_label'), 'trim|required');
@@ -639,7 +640,7 @@ class Auth extends CI_Controller
 				{
 					// Update the groups user belongs to
 					$this->ion_auth->remove_from_group('', $id);
-					
+
 					$groupData = $this->input->post('groups');
 					if (isset($groupData) && !empty($groupData))
 					{
@@ -828,7 +829,7 @@ class Auth extends CI_Controller
 		if ($this->config->item('admin_group', 'ion_auth') === $group->name) {
 			$this->data['group_name']['readonly'] = 'readonly';
 		}
-		
+
 		$this->data['group_description'] = [
 			'name'  => 'group_description',
 			'id'    => 'group_description',
@@ -876,13 +877,24 @@ class Auth extends CI_Controller
 	{
 
 		$viewdata = (empty($data)) ? $this->data : $data;
+		// $output = (object)array('output' => '' , 'js_files' => array() , 'css_files' => array());
 
-		$view_html = $this->load->view($view, $viewdata, $returnhtml);
+		$crud = new grocery_CRUD();
+		$crud->set_table('ns_users');
+		$output = $crud->render();
+
+
+		// Header
+		$view_html_h = $this->load->view('common/header', $output);
+		// PAGE
+		$view_html_b = $this->load->view($view, $viewdata, $returnhtml);
+		// Footer
+		$view_html_f = $this->load->view('common/footer', $output);
 
 		// This will return html on 3rd argument being true
 		if ($returnhtml)
 		{
-			return $view_html;
+			return $view_html_h.$view_html_b.$view_html_f;
 		}
 	}
 

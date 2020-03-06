@@ -58,7 +58,7 @@ $autoload['packages'] = array();
 |
 |	$autoload['libraries'] = array('user_agent' => 'ua');
 */
-$autoload['libraries'] = array();
+$autoload['libraries'] = array('encuestas', 'ion_auth', 'database', 'email', 'session', 'grocery_CRUD', 'form_validation');
 
 /*
 | -------------------------------------------------------------------
@@ -89,7 +89,7 @@ $autoload['drivers'] = array();
 |
 |	$autoload['helper'] = array('url', 'file');
 */
-$autoload['helper'] = array();
+$autoload['helper'] = array('cookie', 'form', 'url', 'html', 'language', 'date', 'text', 'path', 'language');
 
 /*
 | -------------------------------------------------------------------
@@ -103,7 +103,7 @@ $autoload['helper'] = array();
 | config files.  Otherwise, leave it blank.
 |
 */
-$autoload['config'] = array();
+$autoload['config'] = array('grocery_crud');
 
 /*
 | -------------------------------------------------------------------
@@ -117,8 +117,7 @@ $autoload['config'] = array();
 | "codeigniter_lang.php" would be referenced as array('codeigniter');
 |
 */
-$autoload['language'] = array();
-
+$autoload['language'] = array('pagination', 'date', 'calendar', 'db', 'email','number','form_validation','ftp','imglib','profiler','unit_test','upload');
 /*
 | -------------------------------------------------------------------
 |  Auto-load Models
@@ -132,4 +131,4 @@ $autoload['language'] = array();
 |
 |	$autoload['model'] = array('first_model' => 'first');
 */
-$autoload['model'] = array();
+$autoload['model'] = array('grocery_crud_model', 'ion_auth_model', 'encuestas_model');

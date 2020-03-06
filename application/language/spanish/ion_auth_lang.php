@@ -19,8 +19,8 @@ $lang['account_creation_successful'] 	  	      = 'Cuenta creada con éxito';
 $lang['account_creation_unsuccessful'] 	 	      = 'No se ha podido crear la cuenta';
 $lang['account_creation_duplicate_email'] 	    = 'Email en uso o inválido';
 $lang['account_creation_duplicate_identity']    = 'Nombre de usuario en uso o inválido';
-$lang['account_creation_missing_default_group'] = 'No se ha especificado grupo por defecto';
-$lang['account_creation_invalid_default_group'] = 'Nombre de grupo no válido';
+$lang['account_creation_missing_default_group'] = 'No se ha especificado perfil por defecto';
+$lang['account_creation_invalid_default_group'] = 'Nombre de perfil no válido';
 
 // Password
 $lang['password_change_successful'] 	 	        = 'Contraseña renovada con éxito';
@@ -35,7 +35,7 @@ $lang['deactivate_successful']                  = 'Cuenta desactivada con éxito
 $lang['deactivate_unsuccessful']                = 'No se ha podido desactivar la cuenta';
 $lang['activation_email_successful']            = 'Email de activación enviado';
 $lang['activation_email_unsuccessful']          = 'No se ha podido enviar el email de activación';
-$lang['deactivate_current_user_unsuccessful']= 'No se puede desactivar usted mismo';
+$lang['deactivate_current_user_unsuccessful']   = 'No se puede desactivar usted mismo';
 
 // Login / Logout
 $lang['login_successful']                       = 'Sesión iniciada con éxito';
@@ -50,15 +50,15 @@ $lang['update_unsuccessful']                    = 'No se ha podido actualizar la
 $lang['delete_successful']                      = 'Usuario eliminado';
 $lang['delete_unsuccessful']                    = 'No se ha podido eliminar el usuario';
 
-// Groups
-$lang['group_creation_successful']              = 'Grupo creado';
-$lang['group_already_exists']                   = 'Nombre de grupo en uso';
-$lang['group_update_successful']                = 'Grupo actualizado';
-$lang['group_delete_successful']                = 'Grupo borrado';
-$lang['group_delete_unsuccessful']              = 'Imposible borrar grupo';
-$lang['group_delete_notallowed']                = 'No se puede borrar el grupo de administradores';
-$lang['group_name_required']                    = 'Se requiere un nombre de grupo';
-$lang['group_name_admin_not_alter']             = 'El nombre del grupo de administradores no puede ser modificado';
+// Perfiles
+$lang['group_creation_successful']              = 'Perfil creado';
+$lang['group_already_exists']                   = 'Nombre de perfil en uso';
+$lang['group_update_successful']                = 'Perfil actualizado';
+$lang['group_delete_successful']                = 'Perfil borrado';
+$lang['group_delete_unsuccessful']              = 'Imposible borrar perfil';
+$lang['group_delete_notallowed']                = 'No se puede borrar el perfil de administradores';
+$lang['group_name_required']                    = 'Se requiere un nombre de perfil';
+$lang['group_name_admin_not_alter']             = 'El nombre del perfil de administradores no puede ser modificado';
 
 // Activation Email
 $lang['email_activation_subject']               = 'Activación de la cuenta';
@@ -71,4 +71,3 @@ $lang['email_forgotten_password_subject']       = 'Verificación de contraseña 
 $lang['email_forgot_password_heading']          = 'Resetea contraseña para %s';
 $lang['email_forgot_password_subheading']       = 'Por favor, haga click en este link para %s.';
 $lang['email_forgot_password_link']             = 'Resetea tu contraseña';
-

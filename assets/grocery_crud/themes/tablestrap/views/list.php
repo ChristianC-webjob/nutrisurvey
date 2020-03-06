@@ -13,7 +13,7 @@
 		<?php foreach($list as $num_row => $row){ ?>
 		<tr id='row-<?php echo $num_row?>'>
 			<?php foreach($columns as $column){?>
-				<td><?php echo $row->{$column->field_name}?></td>
+				<td nowrap><?php echo $row->{$column->field_name}?></td>
 			<?php }?>
 			<?php if(!$unset_delete || !$unset_edit || !$unset_read || !empty($actions)){?>
 			<td class='actions'>
@@ -63,12 +63,13 @@
 	<tfoot>
 		<tr>
 			<?php foreach($columns as $column){?>
-				<th><input type="text" class="form-control filter-column-input" style="width:100%;" name="<?php echo $column->field_name; ?>" placeholder="<?php echo $this->l('list_search').' '.$column->display_as; ?>" class="search_<?php echo $column->field_name; ?>" /></th>
+				<th style="autowidth:true;"><input type="text" class="form-control filter-column-input" style="width:100%;" name="<?php echo $column->field_name; ?>" placeholder="<?php echo $this->l('list_search').' '.$column->display_as; ?>" class="search_<?php echo $column->field_name; ?>" /></th>
 			<?php }?>
 			<?php if(!$unset_delete || !$unset_edit || !$unset_read || !empty($actions)){?>
-				<th>
+				<th style="autowidth:true;">
 					<button class="btn btn-success refresh-data btn-block" role="button" data-url="<?php echo $ajax_list_url; ?>">
-						<span class="glyphicon glyphicon-refresh"></span> Clear Filter
+						<span class="glyphicon glyphicon-refresh"></span>
+						<span><?php echo $this->l('list_clear_filtering');?></span>
 					</button>
 				</th>
 			<?php }?>

@@ -6,82 +6,49 @@ class Gestion extends CI_Controller {
 	public function __construct()
 	{
 		parent::__construct();
-
-		$this->load->database();
-		$this->load->helper('url');
-
-		$this->load->library('grocery_CRUD');
+		if (!$this->ion_auth->logged_in()) { redirect('auth/login'); }
 	}
 
-	public function _gestion_output($output = null, $destino = null)
-	{
-		if ($destino == '1') {
-			$this->load->view('gestion.php',(array)$output);
-		}elseif ($destino == '2') {
-			$this->load->view('common/crudcontainer.php',(array)$output);
-		}
-
-	}
-
-	/**
-	 * Index Page for this controller.
-	 *
-	 * Maps to the following URL
-	 * 		http://example.com/index.php/welcome
-	 *	- or -
-	 * 		http://example.com/index.php/welcome/index
-	 *	- or -
-	 * Since this controller is set as the default controller in
-	 * config/routes.php, it's displayed at http://example.com/
-	 *
-	 * So any other public methods not prefixed with an underscore will
-	 * map to /index.php/welcome/<method_name>
-	 * @see https://codeigniter.com/user_guide/general/urls.html
-	 */
 	public function index()
 	{
 		$this->_gestion_output((object)array('output' => '' , 'js_files' => array() , 'css_files' => array()), '1');
 	}
 
-	public function entrevistado_lst()
+	public function _gestion_output($output = null, $destino = null)
+	{
+		// Header
+		$this->load->view('common/header', $output);
+		// Container
+		if ($destino == '1') {
+			redirect('Inicio');
+		}elseif ($destino == '2') {
+			$this->load->view('common/crudcontainer', $output);
+		}
+		// Footer
+		$this->load->view('common/footer', $output);
+
+	}
+
+	public function registro_respuestas()
 	{
 		try{
 			$crud = new grocery_CRUD();
-
-			//$crud->set_theme('tablestrap');
-			$crud->set_table('ns_entrevistado');
-			$crud->set_subject('Entrevistado');
-			$crud->required_fields('rut');
-			$crud->columns('rut','nombre','paterno','materno','fecha_nacimiento','codigo_encuestado');
+			$crud->unset_add()->unset_clone()->unset_delete()->unset_edit()->unset_read();
+			$crud->set_table('vw_respuestas');
+			$crud->set_primary_key('id_respuesta', 'vw_respuestas');
+			$crud->set_subject('Respuestas', 'Resultados de Encuestas');
+			$crud->display_as('id_respuesta','Id Respuesta');
+			$crud->display_as('consumo_diario','Consumo Diario');
+			$crud->display_as('tipo_respuesta','Tipo Respuesta');
+			$crud->display_as('fecha_creacion','Fecha Respuesta');
+			$crud->columns('folio', 'encuesta', 'pregunta', 'alimento', 'tipo_respuesta', 'respuesta', 'consumo_diario', 'medida');
 
 			$output = $crud->render();
-
 			$this->_gestion_output($output, '2');
 
 		}catch(Exception $e){
 			show_error($e->getMessage().' --- '.$e->getTraceAsString());
 		}
 	}
-
-	public function registro_encuestas()
-	{
-		try{
-			$crud = new grocery_CRUD();
-
-			//$crud->set_theme('tablestrap');
-			$crud->set_table('ns_registro_encuestas');
-			$crud->set_subject('Encuesta');
-			$crud->required_fields('folio');
-			$crud->columns('folio','codigo_zona','codigo_supervisor','codigo_encuestador','codigo_encuestado');
-
-			$output = $crud->render();
-
-			$this->_gestion_output($output, '2');
-
-		}catch(Exception $e){
-			show_error($e->getMessage().' --- '.$e->getTraceAsString());
-		}
-	}
-
 
 }

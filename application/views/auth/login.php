@@ -1,28 +1,41 @@
-<h1><?php echo lang('login_heading');?></h1>
-<p><?php echo lang('login_subheading');?></p>
-
 <div id="infoMessage"><?php echo $message;?></div>
 
 <?php echo form_open("auth/login");?>
+<table class="login">
+  <tr><td class="encuesta_cen" colspan="2">
+    <h1><?php echo lang('login_heading');?></h1>
+    <p><?php echo lang('login_subheading');?></p>
+  </td></tr>
 
-  <p>
-    <?php echo lang('login_identity_label', 'identity');?>
-    <?php echo form_input($identity);?>
-  </p>
+  <tr>
+    <td class="encuesta_der"><?php echo lang('login_identity_label', 'identity');?></td>
+    <td class="encuesta_izq"><?php echo form_input($identity);?></td>
+  </tr>
 
-  <p>
-    <?php echo lang('login_password_label', 'password');?>
-    <?php echo form_input($password);?>
-  </p>
+  <tr>
+    <td class="encuesta_der"><?php echo lang('login_password_label', 'password');?></td>
+    <td class="encuesta_izq"><?php echo form_input($password);?></td>
+  </tr>
 
-  <p>
-    <?php echo lang('login_remember_label', 'remember');?>
-    <?php echo form_checkbox('remember', '1', FALSE, 'id="remember"');?>
-  </p>
+  <tr><td class="encuesta_cen" colspan="2">
+      <?php echo lang('login_remember_label', 'remember');?>
+      <?php echo form_checkbox('remember', '1', FALSE, 'id="remember"');?>
+  </td></tr>
 
-
-  <p><?php echo form_submit('submit', lang('login_submit_btn'));?></p>
-
+  <tr><td class="encuesta_cen" colspan="2">
+    <?php
+      $data = array(
+              'name'    => 'btn_login',
+              'id'      => 'login',
+              'value'   => 'login',
+              'type'    => 'submit',
+              'content' => lang('login_submit_btn'),
+              'class'   => 'login'
+      );
+      echo form_button($data);
+    ?>
+  </td></tr>
+</table>
 <?php echo form_close();?>
 
-<p><a href="forgot_password"><?php echo lang('login_forgot_password');?></a></p>
+<p align="center"><a href="forgot_password"><?php echo lang('login_forgot_password');?></a></p>

@@ -17,7 +17,7 @@
     $config['grocery_crud_text_editor_type'] = 'full';
 
     // The character limiter at the list page, zero(0) value if you don't want character limiter at your list page
-    $config['grocery_crud_character_limiter'] = 30;
+    $config['grocery_crud_character_limiter'] = 50;
 
     // All the forms are opening with dialog forms without refreshing the page once again.
     // IMPORTANT: PLease be aware that this functionality is still in BETA phase and it is
@@ -29,10 +29,10 @@
     $config['grocery_crud_paging_options'] = array('10','25','50','100');
 
     // Default theme for grocery CRUD
-    $config['grocery_crud_default_theme'] = 'datatables';
+    $config['grocery_crud_default_theme'] = 'bootstrap';
 
     // The environment is important so we can have specific configurations for specific environments
-    $config['grocery_crud_environment'] = 'production';
+    $config['grocery_crud_environment'] = 'development';
 
     // Turn XSS clean into true in case you are exposing your CRUD into public. Please be aware that this is
     // stripping all the HTML and do not just trim the extra javascript
