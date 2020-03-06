@@ -1,0 +1,201 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/*
+    Created on : 14-10-2019, 02:47:26 PM
+    Author     : comadreja
+*/
+
+/* estilos de pagina */
+::selection { background-color: #E13300; color: white; }
+::-moz-selection { background-color: #E13300; color: white; }
+
+body {
+  background-color: #fff;
+  margin: 10px;
+  font: 12px/20px normal Helvetica, Arial, sans-serif;
+  color: #4F5155;
+}
+
+a {
+  color: #003399;
+  background-color: transparent;
+  font-weight: normal;
+}
+
+h1 {
+  color: #444;
+  background-color: transparent;
+  font-size: 24px;
+  font-weight: normal;
+  margin: 0 0 0 0;
+  padding: 20px 20px 1px 20px;
+}
+
+h2 {
+  background-color: transparent;
+  font-size: 24px;
+  margin: 5px 0 0 0;
+  padding: 0 0 0 8px;
+}
+
+#body {
+  margin: 0 15px 0 15px;
+  z-index: 9996;
+}
+
+p.footer {
+  text-align: right;
+  font-size: 10px;
+  border-top: 1px solid #D0D0D0;
+  line-height: 32px;
+  padding: 0 10px 0 10px;
+  margin: 20px 0 0 0;
+}
+
+div.container {
+  /* border: 1px solid #D0D0D0; */
+  /* box-shadow: 0 0 8px #D0D0D0; */
+  width: 100%;
+  z-index: 9995;
+  padding: 0 0 0 0;
+}
+
+/* estilos de menu */
+body {margin: 0;}
+
+div.menu {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  z-index: 9997;
+}
+
+ul.topnav {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #D3D3D3;
+  font: bold 16px/30px Helvetica;
+}
+
+ul.topnav li {float: left;}
+
+ul.topnav li.right {float: right;}
+
+ul.topnav li a, .dropbtn {
+  display: inline-block;
+  color: black;
+  text-align: center;
+  padding: 5px 15px;
+  text-decoration: none;
+}
+
+ul.topnav li a:hover, .dropdown:hover .dropbtn {
+  background-color: #4682B4;
+  color: white;
+  text-decoration: none;
+}
+
+/* ul.topnav li a.active {background-color: #4CAF50;} */
+
+ul.topnav li.dropdown {
+  display: inline-block;
+}
+
+ul.topnav .dropdown-content {
+  display: none;
+  position: fixed;
+  /* background-color: #red; */
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 999999;
+}
+
+ul.topnav .dropdown-content a {
+  color: black;
+  padding: 8px 10px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+
+/* ul.topnav .dropdown-content a:hover {background-color: #D3D3D3;} */
+
+ul.topnav .dropdown:hover .dropdown-content {
+  display: block;
+  background-color: #D3D3D3;
+}
+
+@media screen and (max-width: 600px) {
+  ul.topnav li.right,
+  ul.topnav li {float: none;}
+}
+
+/* encuestas y login */
+
+table.encuesta {
+  vertical-align: bottom;
+  font-size: 18px;
+  width: 98%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+hr.encuesta_solid {
+  border: 1px solid #4682B4;
+}
+
+hr.encuesta_doted {
+  border-top: 1px dotted #4682B4;
+}
+
+hr.encuesta_dashed {
+  border: 1px dashed #4682B4;
+}
+
+td.encuesta_der{
+  padding: 8px 10px 8px 10px;
+  text-align: right;
+}
+
+td.encuesta_cen{
+  padding: 8px 10px 8px 10px;
+  text-align: center;
+}
+
+td.encuesta_izq{
+  padding: 8px 10px 8px 10px;
+  text-align: left;
+}
+
+button.encuesta {
+  background-color: #4682B4;
+  color: white;
+  height: 50px;
+  width: 150px;
+  font-size: 18px;
+}
+
+table.login {
+  margin: 30px 0px 0px 0px;
+  background-color: #D3D3D3;
+  vertical-align: bottom;
+  font-size: 16px;
+  /* border: 1px solid black; */
+  width: 30%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+button.login {
+  margin: 0px 0px 10px 0px;
+  background-color: #4682B4;
+  color: white;
+  height: 30px;
+  width: 100px;
+  font-size: 16px;
+}
